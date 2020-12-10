@@ -2,8 +2,11 @@ package com.example.sharedpreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -51,5 +54,22 @@ public class MainActivity extends AppCompatActivity
         nameET.setText(settings.getString("name",""));
         i=settings.getInt("i",0);
         numberET.setText(""+i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add("Credits");
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Intent si=new Intent(this, CreditsActivity.class);
+        startActivity(si);
+
+        return true;
     }
 }
