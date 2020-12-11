@@ -26,17 +26,35 @@ public class MainActivity extends AppCompatActivity
         readFile();
     }
 
+    /**
+     * This method runs when the count button is pressed. it increases i
+     * by 1.
+     * @param view
+     */
+
     public void count(View view)
     {
         i++;
         numberET.setText(i+"");
     }
 
+    /**
+     * This method runs when the reset button is pressed. It resets the
+     * value of i.
+     * @param view
+     */
+
     public void reset(View view)
     {
         i=0;
         numberET.setText(i+"");
     }
+
+    /**
+     * This method runs when the exit button is pressed. It saves the data and exits
+     * from the app.
+     * @param view
+     */
 
     public void exit(View view)
     {
@@ -48,13 +66,31 @@ public class MainActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * This method runs when the program starts. It reads the data from the file.
+     *
+     * @Param
+     */
+
     public void readFile()
     {
-        SharedPreferences settings=getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
-        nameET.setText(settings.getString("name",""));
-        i=settings.getInt("i",0);
+        try
+        {
+            SharedPreferences settings = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+            nameET.setText(settings.getString("name", ""));
+            i = settings.getInt("i", 0);
+        }
+        catch(Exception IO)
+        {
+            i=0;
+        }
         numberET.setText(""+i);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      creates a menu with one option - cresits
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -63,6 +99,13 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     *
+     * @param item - the item that was selected
+     * @return     After the user pressed on the credits option, this method
+     *             starts CreditsActivity
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
