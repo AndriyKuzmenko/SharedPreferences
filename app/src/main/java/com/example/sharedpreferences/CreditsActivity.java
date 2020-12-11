@@ -15,6 +15,11 @@ public class CreditsActivity extends AppCompatActivity
         setContentView(R.layout.activity_credits);
     }
 
+    /**
+     * this method runs when the back button is pressed. it goes back to the main activity.
+     * @param view
+     */
+
     public void back(View view)
     {
         finish();
